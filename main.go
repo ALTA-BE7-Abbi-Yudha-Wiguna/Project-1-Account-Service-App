@@ -2,6 +2,7 @@ package main
 
 import (
 	"Project1-Account-Service-App/config"
+	"Project1-Account-Service-App/controllers"
 	"Project1-Account-Service-App/entities"
 	"fmt"
 	"gorm.io/gorm"
@@ -49,6 +50,14 @@ func main() {
 	case "3":
 	case "4":
 	case "5":
+		res, err := controllers.TopUp(dbConn)
+		if err != nil {
+			hasil = "Data tidak ditemukan"
+		} else {
+			hasil = fmt.Sprint("=====================", "\n", "Topup berhasil", "\n", "Nominal Topup: ", res.NominalTransfer)
+
+		}
+		fmt.Println(hasil)
 	case "6":
 	case "7":
 	case "8":
