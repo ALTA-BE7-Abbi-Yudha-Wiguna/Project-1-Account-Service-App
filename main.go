@@ -65,6 +65,13 @@ func main() {
 		}
 		fmt.Println(hasil)
 	case "3":
+		res, err := controllers.UpdateUser(dbConn)
+		if err != nil {
+			hasil = "Nomor Handphone tidak ditemukan"
+		} else {
+			hasil = fmt.Sprint("Data User: ", "\n", res.NoHP, "\n", "berhasil diupdate")
+		}
+		fmt.Println(hasil)
 	case "4":
 	case "5":
 	case "6":
