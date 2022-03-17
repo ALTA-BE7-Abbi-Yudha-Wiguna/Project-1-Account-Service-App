@@ -114,6 +114,17 @@ func main() {
 
 		}
 	case "8":
+		res, _ := controllers.HistoriTransfer(dbConn)
+		if len(res) == 0 {
+			hasil = "Data tidak ditemukan"
+			fmt.Println(hasil)
+		} else {
+			for i := 0; i < len(res); i++ {
+				hasil = fmt.Sprint("Nomor Tujuan: ", res[i].NoHpTujuan, "\n", "Nominal Transfer: ", res[i].NominalTransfer, "\n", "Tanggal Transaksi: ", res[i].CreatedAt, "\n", "=====================")
+				fmt.Println(hasil)
+			}
+
+		}
 	case "0":
 	}
 
