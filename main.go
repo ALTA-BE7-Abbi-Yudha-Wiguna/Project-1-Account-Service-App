@@ -2,6 +2,7 @@ package main
 
 import (
 	"Project1-Account-Service-App/config"
+	"Project1-Account-Service-App/controllers"
 	"Project1-Account-Service-App/entities"
 	"fmt"
 
@@ -55,6 +56,14 @@ func main() {
 		}
 		fmt.Println(hasil)
 	case "2":
+		res, err := controllers.LihatUsers(dbConn)
+		if err != nil {
+			hasil = "Data tidak ditemukan"
+		} else {
+			hasil = fmt.Sprint("Nama: ", res.Nama, "\n", "Email: ", res.Email, "\n", "Saldo: ", res.Saldo)
+
+		}
+		fmt.Println(hasil)
 	case "3":
 	case "4":
 	case "5":
