@@ -4,6 +4,7 @@ import (
 	"Project1-Account-Service-App/config"
 	"Project1-Account-Service-App/entities"
 	"fmt"
+
 	"gorm.io/gorm"
 )
 
@@ -45,6 +46,14 @@ func main() {
 
 	switch menu {
 	case "1":
+		res, err := controllers.Registrasi(dbConn)
+		if err != nil {
+			hasil = "nomor handphone sudah terdaftar"
+		} else {
+			hasil = fmt.Sprint("Registrasi Berhasil", "\n", "Nama: ", res.Nama, "\n", "Email: ", res.Email, "\n", "No HP: ", res.NoHP)
+
+		}
+		fmt.Println(hasil)
 	case "2":
 	case "3":
 	case "4":
