@@ -5,6 +5,7 @@ import (
 	"Project1-Account-Service-App/controllers"
 	"Project1-Account-Service-App/entities"
 	"fmt"
+
 	"gorm.io/gorm"
 )
 
@@ -46,9 +47,39 @@ func main() {
 
 	switch menu {
 	case "1":
+		res, err := controllers.Registrasi(dbConn)
+		if err != nil {
+			hasil = "nomor handphone sudah terdaftar"
+		} else {
+			hasil = fmt.Sprint("Registrasi Berhasil", "\n", "Nama: ", res.Nama, "\n", "Email: ", res.Email, "\n", "No HP: ", res.NoHP)
+
+		}
+		fmt.Println(hasil)
 	case "2":
+		res, err := controllers.LihatUsers(dbConn)
+		if err != nil {
+			hasil = "Data tidak ditemukan"
+		} else {
+			hasil = fmt.Sprint("Nama: ", res.Nama, "\n", "Email: ", res.Email, "\n", "Saldo: ", res.Saldo)
+
+		}
+		fmt.Println(hasil)
 	case "3":
+		res, err := controllers.UpdateUser(dbConn)
+		if err != nil {
+			hasil = "Nomor Handphone tidak ditemukan"
+		} else {
+			hasil = fmt.Sprint("Data User: ", "\n", res.NoHP, "\n", "berhasil diupdate")
+		}
+		fmt.Println(hasil)
 	case "4":
+		res, err := controllers.DeleteUser(dbConn)
+		if err != nil {
+			hasil = "Nomor Handphone tidak ditemukan"
+		} else {
+			hasil = fmt.Sprint("User: ", res.NoHP, "\n", "Berhasil dihapus")
+		}
+		fmt.Println(hasil)
 	case "5":
 		res, err := controllers.TopUp(dbConn)
 		if err != nil {
