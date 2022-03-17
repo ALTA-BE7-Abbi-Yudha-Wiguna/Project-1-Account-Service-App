@@ -90,6 +90,17 @@ func main() {
 		}
 		fmt.Println(hasil)
 	case "6":
+		res, err := controllers.Transfer(dbConn)
+		fmt.Println(res)
+		fmt.Println(err)
+		if err != nil && err.Error() != "Saldo tidak cukup" {
+			hasil = "Data tidak ditemukan"
+		} else if err != nil && err.Error() == "Saldo tidak cukup" {
+			hasil = "Saldo tidak cukup"
+		} else {
+			hasil = fmt.Sprint("Nomor HP Pengirim: ", res.NoHpPengirim, "\n", "Nomor HP Tujuan", res.NoHpTujuan, "\n", "Nominal Transfer: ", res.NominalTransfer)
+		}
+		fmt.Println(hasil)
 	case "7":
 	case "8":
 	case "0":
