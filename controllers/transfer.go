@@ -1,10 +1,10 @@
 package controllers
 
 import (
+	"Project1-Account-Service-App/entities"
 	"errors"
 	"fmt"
 	"gorm.io/gorm"
-	"withgorm/entities"
 )
 
 func Transfer(db *gorm.DB) (entities.Transfer, error) {

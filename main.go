@@ -102,6 +102,17 @@ func main() {
 		}
 		fmt.Println(hasil)
 	case "7":
+		res, _ := controllers.HistoriTopup(dbConn)
+		if len(res) == 0 {
+			hasil = "Data tidak ditemukan"
+			fmt.Println(hasil)
+		} else {
+			for i := 0; i < len(res); i++ {
+				hasil = fmt.Sprint("Nominal Topup: ", res[i].NominalTransfer, "\n", "Tanggal Transaksi: ", res[i].CreatedAt, "\n", "=====================")
+				fmt.Println(hasil)
+			}
+
+		}
 	case "8":
 	case "0":
 	}
