@@ -73,6 +73,13 @@ func main() {
 		}
 		fmt.Println(hasil)
 	case "4":
+		res, err := controllers.DeleteUser(dbConn)
+		if err != nil {
+			hasil = "Nomor Handphone tidak ditemukan"
+		} else {
+			hasil = fmt.Sprint("User: ", res.NoHP, "\n", "Berhasil dihapus")
+		}
+		fmt.Println(hasil)
 	case "5":
 	case "6":
 	case "7":
